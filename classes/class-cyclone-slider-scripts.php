@@ -127,7 +127,7 @@ if(!class_exists('Cyclone_Slider_Scripts')):
             $this->enqueue_templates_scripts();
             
             /*** Client Script ***/
-            //wp_enqueue_script( 'cyclone-client', CYCLONE_URL.'js/client.js', array('jquery'), CYCLONE_VERSION, $in_footer );
+            wp_enqueue_script( 'cyclone-client', CYCLONE_URL.'js/client.js', array('jquery'), CYCLONE_VERSION, $in_footer );
 
         }
         
