@@ -6,16 +6,23 @@
 
 
 <?php foreach($slides as $slide): ?>
+	<?php
+	$url =	cyclone_slide_image_url($slide['id'], $slider_settings['width'], $slider_settings['height'], array('current_slide_settings'=>$slide, 'slideshow_settings'=>$slider_settings) );
+	$image_meta = getimagesize($url);
+	$width = $image_meta[0];
+	$height = $image_meta[1];
+	?>
+	
 	<div class="row post section placeholder-container media">	
-		<span class="placeholder blur darken" style="background-image:url(<?php echo cyclone_slide_image_url($slide['id'], $slider_settings['width'], $slider_settings['height'], array('current_slide_settings'=>$slide, 'slideshow_settings'=>$slider_settings) ); ?>)"></span>
+		<span class="placeholder blur darken" style="background-image:url(<?php echo $url; ?>)"></span>
 		
 	<?php if(empty($slide['title'])) : ?>		
 		<div class="img large-12 columns hide-for-small">
-			<img src="<?php echo cyclone_slide_image_url($slide['id'], $slider_settings['width'], $slider_settings['height'], array('current_slide_settings'=>$slide, 'slideshow_settings'=>$slider_settings) ); ?>" alt="<?php echo $slide['img_alt'];?>" title="<?php echo $slide['img_title'];?>">
+			<img src="<?php echo $url; ?>" alt="<?php echo $slide['img_alt'];?>" title="<?php echo $slide['img_title'];?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>">
 		</div>			
 	<?php else : ?>
 		<div class="img large-6 columns hide-for-small">
-			<img src="<?php echo cyclone_slide_image_url($slide['id'], $slider_settings['width'], $slider_settings['height'], array('current_slide_settings'=>$slide, 'slideshow_settings'=>$slider_settings) ); ?>" alt="<?php echo $slide['img_alt'];?>" title="<?php echo $slide['img_title'];?>">
+			<img src="<?php echo $url; ?>" alt="<?php echo $slide['img_alt'];?>" title="<?php echo $slide['img_title'];?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>">
 		</div>
 		
 		<div class="bd large-6 columns">
